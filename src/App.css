@@ -1,38 +1,104 @@
 .App {
-  text-align: center;
+  width: 800px;
+  background-color: hsl(0, 0%, 100%);
+  padding: 15px;
+  border-radius: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 60px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.steps{
+  background-image: url('/./public/images/bg-sidebar-desktop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 30%;
+  border-radius: 10px;
+  padding-top: 25px;
+  padding-left: 20px;
+  height: 70vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.step-number{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.step-number p{
+  margin-bottom: 0;
+  color: hsl(231, 11%, 63%);
+}
+
+.step-number h4{
+  margin-top: 0;
+  color: hsl(231, 100%, 99%);
+  font-weight: 600;
+}
+
+.step-number span{
+  color: white;
+  border: 1px solid hsl(229, 24%, 87%);
+  padding: 8px 13px;
+  border-radius: 50%;
+}
+
+.personal-info{
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-start;
+}
+
+.personal-info form{
+  width: 100%;
+}
+
+.personal-info h1{
+  margin: 0;
+  color: hsl(213, 96%, 18%);
+}
+
+.personal-info p{
+  margin-top: 0;
+  color: hsl(231, 11%, 63%);
+  font-size: 16px;
+}
+
+.info-input{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.info-input h4{
+  margin: 0;
+  color: hsl(213, 96%, 18%);
+}
+
+.info-input input{
+  width: 95%;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 5px;
+  outline: none;
+  height: 20px;
+  padding: 5px 5px 5px 10px;
+  font-size: 15px;
+}
+
+.personal-info button{
+  align-self: flex-end;
+  margin-right: 10px;
+  cursor: pointer;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: hsl(213, 96%, 18%);
 }
