@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Validator from './validator';
 
-export default function PersonalInfo() {
+export default function PersonalInfo({ goToNextStep }) {
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -20,6 +20,7 @@ export default function PersonalInfo() {
 
     // If there are no errors, move to the next step
     if (Object.keys(errors).length === 0) {
+      goToNextStep();
     }
   }
 

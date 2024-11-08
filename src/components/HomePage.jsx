@@ -3,6 +3,13 @@ import PersonalInfo from './PersonalInfo';
 import Plan from './Plan';
 
 export default function HomePage() {
+  // State to track the current step
+  const [currentStep, setCurrentStep] = useState(1);
+
+  // Function to go to the next step
+  const goToNextStep = () => {
+    setCurrentStep(prevStep => prevStep + 1);
+  };
 
   return (
     <div className="home">
@@ -38,8 +45,8 @@ export default function HomePage() {
       </div>
 
       <div className="right">
-        <PersonalInfo />
-        <Plan />
+        {currentStep === 1 && <PersonalInfo goToNextStep={goToNextStep} />}
+        {currentStep === 2 && <Plan />}
       </div>
     </div>
   );
