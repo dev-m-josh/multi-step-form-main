@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Plan({goToPreviousStep}) {
+export default function Plan({ goToPreviousStep, goToNextStep }) {
   // State to manage if the user selected "yearly" or "monthly" plan
   const [isYearly, setIsYearly] = useState(false);
 
@@ -21,7 +21,7 @@ export default function Plan({goToPreviousStep}) {
   const plans = [
     {
       name: 'Arcade',
-      monthlyPrice: '$9/mo', 
+      monthlyPrice: '$9/mo',
       yearlyPrice: '$90/yr',
       freeMonths: '2 months free',
       imageUrl: '/images/icon-arcade.svg',
@@ -49,21 +49,20 @@ export default function Plan({goToPreviousStep}) {
         <p>You have the option of monthly or yearly billing.</p>
 
         <div className="options">
-          {/* Map through each plan in the 'plans' array */}
           {plans.map((plan) => (
             <div
-              key={plan.name} // Each plan should have a unique 'key'
+              key={plan.name} 
               className={`payment-option ${selectedPlan?.name === plan.name ? 'selected' : ''}`}
               onClick={() => handlePlanSelect(plan)}
             >
               <img src={plan.imageUrl} alt={`${plan.name} plan icon`} />
               <div className="payment-level">
                 <h4>{plan.name}</h4>
-                {/* display the price based on whether the user has selected the yearly option */}
+                {/* Display the price based on whether the user has selected the yearly option */}
                 <p>{isYearly ? plan.yearlyPrice : plan.monthlyPrice}</p>
                 {/* If yearly is selected, show the '2 months free' message */}
                 {isYearly && <span>{plan.freeMonths}</span>}
-              </div> 
+              </div>
             </div>
           ))}
         </div>
@@ -80,7 +79,6 @@ export default function Plan({goToPreviousStep}) {
             type="checkbox"
             checked={isYearly}
             onChange={handleToggle}
-            aria-label="Toggle billing period"
           />
           <button
             onClick={() => setIsYearly(true)} // Set to yearly
@@ -92,8 +90,16 @@ export default function Plan({goToPreviousStep}) {
       </header>
 
       <div className="buttons">
-        <button onClick={goToPreviousStep} className="go-back">Go Back</button>
-        <button className="next-step">Next Step</button>
+        <button onClick={goToPreviousStep} className="go-back">
+          Go Back
+        </button>
+        <button
+          onClick={goToNextStep}
+          className="next-step"
+          disabled={!selectedPlan} // Disable the Next Step button if no plan is selected
+        >
+          Next Step
+        </button>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PersonalInfo from './PersonalInfo';
 import Plan from './Plan';
 import AddOns from './AddOns';
+import Summary from './Summary';
 
 export default function HomePage() {
   // State to track the current step
@@ -51,10 +52,11 @@ export default function HomePage() {
       </div>
 
       <div className="right">
-        {/* {currentStep === 1 && <PersonalInfo goToNextStep={goToNextStep} />}
-        {currentStep === 2 && <Plan goToPreviousStep={goToPreviousStep} />} */}
-        <AddOns/>
+        {currentStep === 1 && <PersonalInfo goToNextStep={goToNextStep} />}
+        {currentStep === 2 && <Plan goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep} />}
+        { currentStep === 3 && <AddOns goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep}/>}
+        { currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep}/>}
       </div>
     </div>
   );
-}
+};
