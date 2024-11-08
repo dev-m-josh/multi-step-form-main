@@ -16,11 +16,12 @@ export default function PersonalInfo({ goToNextStep }) {
 
   function handleValidation(e) {
     e.preventDefault();
-    setErrors(Validator(values));
+    let errorlist =  Validator(values);
+    setErrors(errorlist)
 
     // If there are no errors, move to the next step
-    if (Object.keys(errors).length === 0) {
-      goToNextStep();
+    if (Object.keys(errorlist).length === 0) {
+      goToNextStep()
     }
   }
 
@@ -51,7 +52,7 @@ export default function PersonalInfo({ goToNextStep }) {
       <div className="info-input">
         <h4>Phone Number:</h4>
         <input
-          type="number"
+          type="tell"
           placeholder="eg: 0712345678"
           name="phone"
           onChange={handleInput}

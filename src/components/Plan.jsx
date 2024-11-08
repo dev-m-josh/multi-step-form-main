@@ -63,7 +63,7 @@ export default function Plan({goToPreviousStep}) {
                 <p>{isYearly ? plan.yearlyPrice : plan.monthlyPrice}</p>
                 {/* If yearly is selected, show the '2 months free' message */}
                 {isYearly && <span>{plan.freeMonths}</span>}
-              </div>
+              </div> 
             </div>
           ))}
         </div>

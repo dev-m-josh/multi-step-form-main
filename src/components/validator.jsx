@@ -24,6 +24,5 @@ export default function Validator(values) {
         errors.Phone = "Phone number is invalid!"
     }
 
-console.log(errors)
   return (errors)
 }

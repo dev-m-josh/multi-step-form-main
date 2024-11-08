@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PersonalInfo from './PersonalInfo';
 import Plan from './Plan';
+import AddOns from './AddOns';
 
 export default function HomePage() {
   // State to track the current step
@@ -9,6 +10,11 @@ export default function HomePage() {
   // Function to go to the next step
   const goToNextStep = () => {
     setCurrentStep(prevStep => prevStep + 1);
+  };
+
+  // Function to go back to the previous step
+  const goToPreviousStep = () => {
+    setCurrentStep(prevStep => prevStep - 1);
   };
 
   return (
@@ -45,8 +51,9 @@ export default function HomePage() {
       </div>
 
       <div className="right">
-        {currentStep === 1 && <PersonalInfo goToNextStep={goToNextStep} />}
-        {currentStep === 2 && <Plan />}
+        {/* {currentStep === 1 && <PersonalInfo goToNextStep={goToNextStep} />}
+        {currentStep === 2 && <Plan goToPreviousStep={goToPreviousStep} />} */}
+        <AddOns/>
       </div>
     </div>
   );
