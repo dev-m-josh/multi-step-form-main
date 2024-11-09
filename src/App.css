@@ -410,3 +410,22 @@
   font-size: 15px;
   background-color:hsl(239, 96%, 78%);
 }
+
+.thanks{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.thanks h1{
+  color: hsl(213, 96%, 18%);
+}
+
+.thanks p{
+  text-align: center;
+  color: hsl(231, 11%, 63%);
+  margin: 0;
+  font-size: 15px;
+}

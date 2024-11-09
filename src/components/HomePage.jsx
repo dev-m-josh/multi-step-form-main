@@ -3,10 +3,12 @@ import PersonalInfo from './PersonalInfo';
 import Plan from './Plan';
 import AddOns from './AddOns';
 import Summary from './Summary';
+import FinalStep from './FinalStep';
 
 export default function HomePage() {
   // State to track the current step
   const [currentStep, setCurrentStep] = useState(1);
+  console.log(currentStep)
 
   // Function to go to the next step
   const goToNextStep = () => {
@@ -54,8 +56,9 @@ export default function HomePage() {
       <div className="right">
         {currentStep === 1 && <PersonalInfo goToNextStep={goToNextStep} />}
         {currentStep === 2 && <Plan goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep} />}
-        { currentStep === 3 && <AddOns goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep}/>}
-        { currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep}/>}
+        {currentStep === 3 && <AddOns goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep}/>}
+        {currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep}/>}
+        {currentStep === 5 && <FinalStep />}
       </div>
     </div>
   );

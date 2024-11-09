@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Summary({goToPreviousStep, goToNextsStep}) {
+export default function Summary({goToPreviousStep, goToNextStep}) {
   return (
     <div className='summary'>
         <h1>Finishing Up</h1>
@@ -27,7 +27,7 @@ export default function Summary({goToPreviousStep, goToNextsStep}) {
         </div>
         <div className="buttons">
         <button onClick={goToPreviousStep} className="go-back">Go Back</button>
-        <button onClick={goToNextsStep} className="confirm">Confirm</button>
+        <button onClick={goToNextStep} className="confirm">Confirm</button>
       </div>
     </div>
   )
