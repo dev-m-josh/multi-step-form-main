@@ -7,7 +7,7 @@ export default function Summary({goToPreviousStep, goToNextsStep}) {
         <p>Double-check everything looks OK before confirming.</p>
         <div className='selected-data'>
             <div className='duration'>
-                <div>
+                <div style={{marginLeft: '15px'}}>
                     <h3>Arcade (Monthly)</h3>
                     <p>change</p>
                 </div>
@@ -18,10 +18,6 @@ export default function Summary({goToPreviousStep, goToNextsStep}) {
                 <div className='add-ons-data'>
                     <p>Online service</p>
                     <h4>+$1/mo</h4>
-                </div>
-                <div className='add-ons-data'>
-                    <p>Larger storage</p>
-                    <h4>+$2/mo</h4>
                 </div>
             </div>
         </div>
