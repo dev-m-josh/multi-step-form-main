@@ -1,17 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function Plan({ goToPreviousStep, goToNextStep, selectedPlan, handlePlanSelect }) {
-  // State to manage if the user selected "yearly" or "monthly" plan
-  const [isYearly, setIsYearly] = useState(false);
-
-  // State to store the selected plan object
-
-
-  // Function to toggle between monthly and yearly plans
-  const handleToggle = () => {
-    setIsYearly((prevState) => !prevState);
-  };
-
+export default function Plan({ goToPreviousStep, goToNextStep, selectedPlan, handlePlanSelect, handleToggle, isYearly, setIsYearly }) {
 
   // Array of available plans with their prices and icons
   const plans = [
