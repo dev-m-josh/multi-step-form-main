@@ -8,6 +8,7 @@ import FinalStep from './FinalStep';
 export default function HomePage() {
   // States to track personal information, selected plan, and add-ons
   const [personalInfo, setPersonalInfo] = useState({ name: '', email: '', phone: '' });
+  const [selectedPlan, setSelectedPlan] = useState(null);
 
   // State to track the current step
   const [currentStep, setCurrentStep] = useState(1);
@@ -25,6 +26,11 @@ export default function HomePage() {
   // Function to update personal information
   const handlePersonalInfoChange = (newInfo) => {
     setPersonalInfo((prevInfo) => ({ ...prevInfo, ...newInfo }));
+  };
+  
+  // Function to handle the selection of a plan
+  const handlePlanSelect = (plan) => {
+    setSelectedPlan(plan);
   };
 
   // function to change the plan
@@ -70,11 +76,11 @@ export default function HomePage() {
         {/* Step 1: Personal Info */}
         {currentStep === 1 && <PersonalInfo goToNextStep={goToNextStep} handlePersonalInfoChange={handlePersonalInfoChange} personalInfo={personalInfo} />}
 
-        {currentStep === 2 && <Plan goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep}/>}
+        {currentStep === 2 && <Plan goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep} handlePlanSelect={handlePlanSelect} selectedPlan={selectedPlan}/>}
 
         {currentStep === 3 && <AddOns goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep}/>}
 
-        {currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep} handlePlanChange={handlePlanChange}/>}
+        {currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep} handlePlanChange={handlePlanChange} selectedPlan={selectedPlan}/>}
 
         {/* Final Step (Confirmation) */}
         {currentStep === 5 && <FinalStep />}

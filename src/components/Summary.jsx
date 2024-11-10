@@ -1,9 +1,8 @@
 import React from 'react'
 
-export default function Summary({goToPreviousStep, goToNextStep, handlePlanChange}) {
+export default function Summary({goToPreviousStep, goToNextStep, handlePlanChange, selectedPlan}) {
 
-
-
+    console.log(selectedPlan)
   return (
     <div className='summary'>
         <h1>Finishing Up</h1>
@@ -14,7 +13,7 @@ export default function Summary({goToPreviousStep, goToNextStep, handlePlanChang
                     <h3>Arcade (Monthly)</h3>
                     <p onClick={handlePlanChange}>change</p>
                 </div>
-                <h4>$9/mo</h4>
+                <h4>{selectedPlan.monthlyPrice}</h4>
             </div>
             <hr />
             <div className='selected-add-ons'>
