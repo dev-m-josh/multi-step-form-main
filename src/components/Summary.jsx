@@ -1,6 +1,9 @@
 import React from 'react'
 
-export default function Summary({goToPreviousStep, goToNextStep}) {
+export default function Summary({goToPreviousStep, goToNextStep, handlePlanChange}) {
+
+
+
   return (
     <div className='summary'>
         <h1>Finishing Up</h1>
@@ -9,7 +12,7 @@ export default function Summary({goToPreviousStep, goToNextStep}) {
             <div className='duration'>
                 <div style={{marginLeft: '15px'}}>
                     <h3>Arcade (Monthly)</h3>
-                    <p>change</p>
+                    <p onClick={handlePlanChange}>change</p>
                 </div>
                 <h4>$9/mo</h4>
             </div>

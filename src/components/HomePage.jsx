@@ -6,9 +6,11 @@ import Summary from './Summary';
 import FinalStep from './FinalStep';
 
 export default function HomePage() {
+  // States to track personal information, selected plan, and add-ons
+  const [personalInfo, setPersonalInfo] = useState({ name: '', email: '', phone: '' });
+
   // State to track the current step
   const [currentStep, setCurrentStep] = useState(1);
-  console.log(currentStep)
 
   // Function to go to the next step
   const goToNextStep = () => {
@@ -20,9 +22,20 @@ export default function HomePage() {
     setCurrentStep(prevStep => prevStep - 1);
   };
 
+  // Function to update personal information
+  const handlePersonalInfoChange = (newInfo) => {
+    setPersonalInfo((prevInfo) => ({ ...prevInfo, ...newInfo }));
+  };
+
+  // function to change the plan
+  function handlePlanChange() {
+    setCurrentStep(prevStep => prevStep - 2);
+  }
+
   return (
     <div className="home">
       <div className="steps">
+        {/* Steps UI */}
         <div className="step-number">
           <span>1</span>
           <div className="step-info">
@@ -54,12 +67,18 @@ export default function HomePage() {
       </div>
 
       <div className="right">
-        {currentStep === 1 && <PersonalInfo goToNextStep={goToNextStep} />}
-        {currentStep === 2 && <Plan goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep} />}
-        {currentStep === 3 && <AddOns goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep}/>}
-        {currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep= {goToNextStep}/>}
+        {/* Step 1: Personal Info */}
+        {currentStep === 1 && <PersonalInfo goToNextStep={goToNextStep} handlePersonalInfoChange={handlePersonalInfoChange} personalInfo={personalInfo} />}
+
+        {currentStep === 2 && <Plan goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep}/>}
+
+        {currentStep === 3 && <AddOns goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep}/>}
+
+        {currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep} handlePlanChange={handlePlanChange}/>}
+
+        {/* Final Step (Confirmation) */}
         {currentStep === 5 && <FinalStep />}
       </div>
     </div>
   );
-};
+}

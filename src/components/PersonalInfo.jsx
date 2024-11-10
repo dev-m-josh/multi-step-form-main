@@ -1,65 +1,49 @@
-import React, { useState } from 'react';
-import Validator from './validator';
+import React from 'react';
 
-export default function PersonalInfo({ goToNextStep }) {
-  const [values, setValues] = useState({
-    name: '',
-    email: '',
-    phone: ''
-  });
-
-  const [errors, setErrors] = useState({});
-
-  function handleInput(e) {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  }
-
-  function handleValidation(e) {
-    e.preventDefault();
-    let errorlist =  Validator(values);
-    setErrors(errorlist)
-
-    // If there are no errors, move to the next step
-    if (Object.keys(errorlist).length === 0) {
-      goToNextStep()
-    }
-  }
+export default function PersonalInfo({ goToNextStep, handlePersonalInfoChange, personalInfo }) {
+  const handleInput = (e) => {
+    handlePersonalInfoChange({ [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="personal-info">
       <h1>Personal info</h1>
       <p>Please provide your name, email address, and phone number.</p>
+      
       <div className="info-input">
         <h4>Name:</h4>
         <input
           type="text"
-          placeholder="John Doe"
           name="name"
+          placeholder="John Doe"
+          value={personalInfo.name}
           onChange={handleInput}
         />
-        {errors.Name && <p style={{ color: 'red', margin: 0 }}>{errors.Name}</p>}
       </div>
+      
       <div className="info-input">
         <h4>Email Address:</h4>
         <input
           type="email"
-          placeholder="emailexample@gmail.com"
           name="email"
+          placeholder="emailexample@gmail.com"
+          value={personalInfo.email}
           onChange={handleInput}
         />
-        {errors.Email && <p style={{ color: 'red', margin: 0 }}>{errors.Email}</p>}
       </div>
+
       <div className="info-input">
         <h4>Phone Number:</h4>
         <input
-          type="tell"
-          placeholder="eg: 0712345678"
+          type="tel"
           name="phone"
+          placeholder="eg: 0712345678"
+          value={personalInfo.phone}
           onChange={handleInput}
         />
-        {errors.Phone && <p style={{ color: 'red', margin: 0 }}>{errors.Phone}</p>}
       </div>
-      <button onClick={handleValidation} type="submit" className="next-step">
+
+      <button onClick={goToNextStep} className="next-step">
         Next Step
       </button>
     </div>
