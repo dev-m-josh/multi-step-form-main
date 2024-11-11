@@ -11,11 +11,8 @@ export default function HomePage() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   // State to manage if the user selected "yearly" or "monthly" plan
   const [isYearly, setIsYearly] = useState(false);
-  // Track selected add-ons in state
-  const [selectedAddOns, setSelectedAddOns] = useState([]);
-  console.log(selectedAddOns)
-
-  
+  // Track selected add-ons in state as an object with title as key
+  const [selectedAddOns, setSelectedAddOns] = useState({});
 
   // State to track the current step
   const [currentStep, setCurrentStep] = useState(1);
@@ -43,6 +40,7 @@ export default function HomePage() {
   // Function to handle the selection of a plan
   const handlePlanSelect = (plan) => {
     setSelectedPlan(plan);
+    setSelectedAddOns({});
   };
 
   // function to change the plan
@@ -51,12 +49,15 @@ export default function HomePage() {
   };
 
   // Toggle the selection of an add-on
-  const handleSelect = (title) => {
+  const handleSelect = (title, price) => {
     setSelectedAddOns((prevSelected) => {
-      if (prevSelected.includes(title)) {
-        return prevSelected.filter((item) => item !== title); // Deselect if already selected
+      if (prevSelected[title]) {
+        // If already selected, remove it
+        const { [title]: _, ...rest } = prevSelected;
+        return rest;
       } else {
-        return [...prevSelected, title]; // Select the add-on
+        // If not selected, add it with its price
+        return { ...prevSelected, [title]: { selected: true, price } };
       }
     });
   };
@@ -103,7 +104,7 @@ export default function HomePage() {
 
         {currentStep === 3 && <AddOns goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep}  isYearly={isYearly} handleSelect={handleSelect} selectedAddOns={selectedAddOns}/>}
 
-        {currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep} handlePlanChange={handlePlanChange} selectedPlan={selectedPlan} isYearly={isYearly}/>}
+        {currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep} handlePlanChange={handlePlanChange} selectedPlan={selectedPlan} isYearly={isYearly} selectedAddOns={selectedAddOns}/>}
 
         {/* Final Step (Confirmation) */}
         {currentStep === 5 && <FinalStep />}

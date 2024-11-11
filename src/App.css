@@ -82,7 +82,8 @@
 }
 
 .info-input p{
-  text-shadow: 2px 2px 20px #FF0000
+  text-shadow: 2px 2px 20px #FF0000;
+  color:red ;
 }
 
 .info-input h4{
