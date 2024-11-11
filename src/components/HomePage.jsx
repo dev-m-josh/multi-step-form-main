@@ -11,6 +11,11 @@ export default function HomePage() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   // State to manage if the user selected "yearly" or "monthly" plan
   const [isYearly, setIsYearly] = useState(false);
+  // Track selected add-ons in state
+  const [selectedAddOns, setSelectedAddOns] = useState([]);
+  console.log(selectedAddOns)
+
+  
 
   // State to track the current step
   const [currentStep, setCurrentStep] = useState(1);
@@ -43,7 +48,18 @@ export default function HomePage() {
   // function to change the plan
   function handlePlanChange() {
     setCurrentStep(prevStep => prevStep - 2);
-  }
+  };
+
+  // Toggle the selection of an add-on
+  const handleSelect = (title) => {
+    setSelectedAddOns((prevSelected) => {
+      if (prevSelected.includes(title)) {
+        return prevSelected.filter((item) => item !== title); // Deselect if already selected
+      } else {
+        return [...prevSelected, title]; // Select the add-on
+      }
+    });
+  };
 
   return (
     <div className="home">
@@ -85,7 +101,7 @@ export default function HomePage() {
 
         {currentStep === 2 && <Plan goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep} handlePlanSelect={handlePlanSelect} selectedPlan={selectedPlan} handleToggle={handleToggle} isYearly={isYearly} setIsYearly={setIsYearly}/>}
 
-        {currentStep === 3 && <AddOns goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep}/>}
+        {currentStep === 3 && <AddOns goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep}  isYearly={isYearly} handleSelect={handleSelect} selectedAddOns={selectedAddOns}/>}
 
         {currentStep === 4 && <Summary goToPreviousStep={goToPreviousStep} goToNextStep={goToNextStep} handlePlanChange={handlePlanChange} selectedPlan={selectedPlan} isYearly={isYearly}/>}
 

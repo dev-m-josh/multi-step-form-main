@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function AddOn({ title, description, price, isSelected, onSelect }) {
+
   return (
     <div
       className={`add-on ${isSelected ? 'selected' : ''}`}
@@ -18,45 +19,35 @@ function AddOn({ title, description, price, isSelected, onSelect }) {
             <p>{description}</p>
           </div>
       </div>
-      <span>+${price}/mo</span>
+      <span>{price}</span>
     </div>
   );
 }
 
-export default function AddOns({ goToPreviousStep, goToNextStep }) {
-  // Track selected add-ons in state
-  const [selectedAddOns, setSelectedAddOns] = useState([]);
-  console.log(selectedAddOns)
-
-  // Sample add-ons data
+export default function AddOns({ goToPreviousStep, goToNextStep, isYearly, handleSelect, selectedAddOns }) {
+// Sample add-ons data
   const addOnsData = [
     {
       title: 'Online service',
       description: 'Access to multiplayer games', 
-      price: 1 
+      monthlyPrice: "+$1/mo",
+      yearlyPrice: "+$10/yr" 
     },
     {
       title: 'Larger storage', 
       description: 'Extra 1TB of cloud storage',
-      price: 2 
+      monthlyPrice: "+$2/mo",
+      yearlyPrice: "+$20/yr" 
     },
     { 
       title: 'Customizable profile',
       description: 'Custom theme on your profile', 
-      price: 2 
+      monthlyPrice: "+$2/mo",
+      yearlyPrice: "+$20/yr" 
     },
   ];
 
-  // Toggle the selection of an add-on
-  const handleSelect = (title) => {
-    setSelectedAddOns((prevSelected) => {
-      if (prevSelected.includes(title)) {
-        return prevSelected.filter((item) => item !== title); // Deselect if already selected
-      } else {
-        return [...prevSelected, title]; // Select the add-on
-      }
-    });
-  };
+
 
   return (
     <div className="add-ons">
@@ -68,7 +59,7 @@ export default function AddOns({ goToPreviousStep, goToNextStep }) {
             key={addOn.title}
             title={addOn.title}
             description={addOn.description}
-            price={addOn.price}
+            price={isYearly ? addOn.yearlyPrice : addOn.monthlyPrice}
             isSelected={selectedAddOns.includes(addOn.title)} // Check if the add-on is selected
             onSelect={handleSelect} // Pass the handleSelect function to toggle the selection
           />
