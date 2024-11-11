@@ -30,12 +30,10 @@ export default function Summary({ goToPreviousStep, goToNextStep, handlePlanChan
     });
   };
 
-  let array = addOnsTotal();
+  let pricesArray = addOnsTotal();
 
-  let sum = 0; 
-  for (let i = 0; i < array.length; i++ ) {
-    sum += array[i];
-  };
+  let sum = pricesArray.reduce((acc, price) => acc + price, 0);
+
 
   const yearlyPlan = Number(selectedPlan.yearlyPrice.substr(1, 3));
   const monthlyPlan = Number(selectedPlan.monthlyPrice.substr(1, 2));
