@@ -40,12 +40,12 @@ export default function HomePage() {
   // Function to handle the selection of a plan
   const handlePlanSelect = (plan) => {
     setSelectedPlan(plan);
-    setSelectedAddOns({});
   };
 
   // function to change the plan
   function handlePlanChange() {
     setCurrentStep(prevStep => prevStep - 2);
+    setSelectedAddOns({});
   };
 
   // Toggle the selection of an add-on
@@ -65,35 +65,15 @@ export default function HomePage() {
   return (
     <div className="home">
       <div className="steps">
-        {/* Steps UI */}
-        <div className="step-number">
-          <span>1</span>
-          <div className="step-info">
-            <p>STEP 1</p>
-            <h4>YOUR INFO</h4>
+        {[1, 2, 3, 4].map((step) => (
+          <div key={step} className="step-number">
+            <span className={currentStep === step ? 'active' : ''}>{step}</span>
+            <div className="step-info">
+              <p>STEP {step}</p>
+              <h4>{step === 1 ? 'YOUR INFO' : step === 2 ? 'SELECT PLAN' : step === 3 ? 'ADD-ONS' : 'SUMMARY'}</h4>
+            </div>
           </div>
-        </div>
-        <div className="step-number">
-          <span>2</span>
-          <div className="step-info">
-            <p>STEP 2</p>
-            <h4>SELECT PLAN</h4>
-          </div>
-        </div>
-        <div className="step-number">
-          <span>3</span>
-          <div className="step-info">
-            <p>STEP 3</p>
-            <h4>ADD-ONS</h4>
-          </div>
-        </div>
-        <div className="step-number">
-          <span>4</span>
-          <div className="step-info">
-            <p>STEP 4</p>
-            <h4>SUMMARY</h4>
-          </div>
-        </div>
+        ))}
       </div>
 
       <div className="right">

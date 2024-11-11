@@ -24,27 +24,26 @@ function AddOn({ title, description, price, isSelected, onSelect }) {
 }
 
 export default function AddOns({ goToPreviousStep, goToNextStep, isYearly, handleSelect, selectedAddOns }) {
-  console.log(selectedAddOns);
   
   // Sample add-ons data
   const addOnsData = [
     {
       title: 'Online service',
       description: 'Access to multiplayer games', 
-      monthlyPrice: '$1/mo',
-      yearlyPrice: '$10/yr' 
+      monthlyPrice: '+$1/mo',
+      yearlyPrice: '+$10/yr' 
     },
     {
       title: 'Larger storage', 
       description: 'Extra 1TB of cloud storage',
-      monthlyPrice: '$2/mo',
-      yearlyPrice: '$20/yr'
+      monthlyPrice: '+$2/mo',
+      yearlyPrice: '+$20/yr'
     },
     { 
       title: 'Customizable profile',
       description: 'Custom theme on your profile', 
-      monthlyPrice: '$2/mo',
-      yearlyPrice: '$20/yr' 
+      monthlyPrice: '+$2/mo',
+      yearlyPrice: '+$20/yr' 
     },
   ];
 

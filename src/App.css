@@ -430,3 +430,15 @@
   margin: 0;
   font-size: 15px;
 }
+
+
+.step-number span {
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.step-number span.active {
+  background-color: hsl(206, 94%, 87%);
+  color: hsl(213, 96%, 18%);
+}

@@ -17,6 +17,29 @@ export default function Summary({ goToPreviousStep, goToNextStep, handlePlanChan
     });
   };
 
+  //getting the total
+  const addOnsTotal = () => {
+    return Object.keys(selectedAddOns).map((title) => {
+      const { selected, price } = selectedAddOns[title];
+      if (selected) {
+        let addOnPrices = Number(!isYearly ? price.substr(2, 1) : price.substr(2, 2));
+
+        return (addOnPrices)      
+      }
+      return null;
+    });
+  };
+
+  let array = addOnsTotal();
+
+  let sum = 0; 
+  for (let i = 0; i < array.length; i++ ) {
+    sum += array[i];
+  };
+
+  const yearlyPlan = Number(selectedPlan.yearlyPrice.substr(1, 3));
+  const monthlyPlan = Number(selectedPlan.monthlyPrice.substr(1, 2));
+
   return (
     <div className="summary">
       <h1>Finishing Up</h1>
@@ -36,6 +59,7 @@ export default function Summary({ goToPreviousStep, goToNextStep, handlePlanChan
       </div>
       <div className="totals">
         <p>Total ({isYearly ? 'per year' : 'per month'})</p>
+        <h3>+${isYearly ? yearlyPlan + sum : monthlyPlan + sum}{isYearly ? '/yr' : '/mo'}</h3>
       </div>
       <div className="buttons">
         <button onClick={goToPreviousStep} className="go-back">Go Back</button>
