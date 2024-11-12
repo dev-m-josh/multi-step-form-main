@@ -442,3 +442,119 @@
   background-color: hsl(206, 94%, 87%);
   color: hsl(213, 96%, 18%);
 }
+
+@media only screen and (max-width: 600px) {
+  .App{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .home {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .steps{
+    background-image: url('/./public/images/bg-sidebar-desktop.svg');
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    gap: 20px;
+    padding: 30px 0 0 0;
+    width: 100%;
+    height: 30vh;
+    align-items: flex-start;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    border-radius: 0;
+  }
+
+  .step-number{
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step-info{
+    display: none;
+    width: 0;
+  }
+  
+  .right{
+    background-color: white;
+    position: absolute;
+    top: 100px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 0;
+  }
+
+  .personal-info{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .plan{
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .top{
+    width: 100%;
+  }
+
+  .options{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .payment-option{
+    width: 94%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .payment-option img{
+    margin: 0;
+  }
+
+  .buttons{
+    margin-top: 20px;
+  }
+
+  .next-step{
+    margin: 0;
+  }
+
+  .add-ons{
+    padding: 20px;
+  }
+
+  .summary{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .thanks{
+    padding: 60px 20px;
+  }
+}

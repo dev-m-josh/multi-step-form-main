@@ -32,9 +32,10 @@ export default function Summary({ goToPreviousStep, goToNextStep, handlePlanChan
 
   let pricesArray = addOnsTotal();
 
+  // reduce method to calculate addOn totals
   let sum = pricesArray.reduce((acc, price) => acc + price, 0);
 
-
+  //yearly and montly totals
   const yearlyPlan = Number(selectedPlan.yearlyPrice.substr(1, 3));
   const monthlyPlan = Number(selectedPlan.monthlyPrice.substr(1, 2));
 
